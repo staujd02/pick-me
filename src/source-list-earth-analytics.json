@@ -1,0 +1,46 @@
+[
+    {
+        "source": "https://earth.nullschool.net/#current/particulates/surface/level/overlay=pm10/stereographic=-89.52,26.53,757/loc=-92.818,-73.479",
+        "title": "Map displaying particulates dispersion"
+    },
+    {
+        "source": "https://earth.nullschool.net/#current/ocean/surface/currents/overlay=currents/stereographic=-89.52,26.53,757/loc=-92.818,-73.479",
+        "title": "A map of the ocean currents"
+    },
+    {
+        "source": "https://earth.nullschool.net/#current/wind/isobaric/1000hPa/stereographic=-89.52,26.53,757/loc=-92.818,-73.479",
+        "title": "A map of wind patterns at 1000hPa pressure"
+    },
+    {
+        "source": "https://earth.nullschool.net/#current/wind/isobaric/850hPa/stereographic=-89.52,26.53,757/loc=-92.818,-73.479",
+        "title": "A map of wind patterns at 850hPa pressure"
+    },
+    {
+        "source": "https://earth.nullschool.net/#current/wind/isobaric/700hPa/stereographic=-89.52,26.53,757/loc=-92.818,-73.479",
+        "title": "A map of wind patterns at 700hPa pressure"
+    },
+    {
+        "source": "https://earth.nullschool.net/#current/wind/isobaric/500hPa/stereographic=-89.52,26.53,757/loc=-92.818,-73.479",
+        "title": "A map of wind patterns at 500hPa pressure"
+    },
+    {
+        "source": "https://earth.nullschool.net/#current/wind/isobaric/250hPa/stereographic=-89.52,26.53,757/loc=-92.818,-73.479",
+        "title": "A map of wind patterns at 250hPa pressure"
+    },
+    {
+        "source": "https://earth.nullschool.net/#current/wind/isobaric/10hPa/stereographic=-89.52,26.53,757/loc=-92.818,-73.479",
+        "title": "A map of wind patterns at 250hPa pressure"
+    },
+    {
+        "source": "https://earth.nullschool.net/#current/chem/surface/level/overlay=cosc/stereographic=-89.52,26.53,757/loc=-92.818,-73.479",
+        "title": "A map of cosc dispertions"
+    },
+    {
+        "source": "https://earth.nullschool.net/#current/chem/surface/level/overlay=co2sc/stereographic=-89.52,26.53,757/loc=-92.818,-73.479",
+        "title": "A map of C02SC dispertions"
+    },
+    {
+        "source": "https://earth.nullschool.net/#current/chem/surface/level/overlay=so2smass/stereographic=-89.52,26.53,757/loc=-92.818,-73.479",
+        "title": "A map of so2smass dispertions"
+    }
+]

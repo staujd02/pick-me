@@ -1,0 +1,17 @@
+iframe {
+  border: 0; 
+  width: 100%; 
+  height: -webkit-fill-available;
+}
+
+div {
+  height: 100%;
+}
+
+::-webkit-scrollbar { 
+  display: none; 
+}
+
+body{
+  margin: 0;
+}

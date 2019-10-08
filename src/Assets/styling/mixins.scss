@@ -1,0 +1,21 @@
+@import 'palette.scss';
+
+@mixin alpha-background-color($color, $background) {
+    @include alpha-attribute('background-color', $color, $background);
+}
+
+@mixin button-shadow-effect {
+    box-shadow: 0 0 3px 3px $color3;
+
+    &:hover {
+        box-shadow: 0 0 7px 5px $color3;
+    }
+}
+
+@mixin alpha-attribute($attribute, $color, $background) {
+    $percent: alpha($color) * 100%;
+    $opaque: opacify($color, 1);
+    $solid-color: mix($opaque, $background, $percent);
+    #{$attribute}: $solid-color;
+    #{$attribute}: $color;
+}

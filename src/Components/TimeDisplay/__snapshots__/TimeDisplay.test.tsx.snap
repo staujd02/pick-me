@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The time display renders correctly 1`] = `"<button class=\\"MuiButtonBase-root MuiButton-root time-display MuiButton-text MuiButton-colorInherit\\" tabindex=\\"0\\" type=\\"button\\"><span class=\\"MuiButton-label\\"><div class=\\"time-box\\">60:03</div></span></button>"`;

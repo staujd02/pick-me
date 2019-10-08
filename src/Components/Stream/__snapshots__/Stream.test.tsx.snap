@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Stream renders correctly 1`] = `
+"
+<iframe title=\\"Google\\" allow=\\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\\" src=\\"https://www.google.com\\">Your browser doesn&#x27;t support iFrames.</iframe>
+"
+`;

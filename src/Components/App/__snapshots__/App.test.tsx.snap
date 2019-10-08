@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The App renders correctly 1`] = `
+"
+<div class=\\"App\\">
+  <div>
+    <header class=\\"App-header\\">
+      <img src=\\"kaleidoscope-2.svg\\" class=\\"App-logo\\" alt=\\"logo\\">
+      <p>Starting Up The Streams...</p>
+    </header>
+    <button>Configure Streams</button>
+  </div>
+</div>
+"
+`;

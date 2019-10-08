@@ -1,0 +1,33 @@
+@import '../../../Assets/styling/mixins.scss';
+@import '../../../Assets/styling/palette.scss';
+
+#cycler-controls {
+    @include alpha-background-color(rgba($color1, $light), $color2);
+
+    position: absolute;
+    left: calc(50vw - 150px / 2);
+    top: -25px;
+    padding-top: 65px;
+    height: 75px;
+    width: 165px;
+    border-radius: 25px;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+#cycler-controls button {
+    @include alpha-background-color(rgba($color1, $heavy), $color2);
+    @include button-shadow-effect;
+
+    flex: 1 1;
+    color: $color2;
+    border: none;
+    max-height: 50px;
+    max-width: 50px;
+    border-radius: 50px;
+    cursor: pointer;
+    margin: 10px;
+}
