@@ -1,8 +1,8 @@
 {
-  "name": "kaleidoscope-web-streamer",
+  "name": "pick-me",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://staujd02.github.io/kaleidoscope-web-streamer",
+  "homepage": "https://staujd02.github.io/pick-me",
   "dependencies": {
     "@material-ui/core": "^4.3.2",
     "@types/enzyme": "^3.10.3",

@@ -12,13 +12,4 @@ describe('The App', () => {
   });
 
   it('renders correctly', () => expect(formatHTML(wrapper.html())).toMatchSnapshot());
-
-  xdescribe("given the browser support going fullscreen", () => {
-    describe("when the user clicks on the App", () => {
-      it("goes fullscreen", () => {
-        // ?      
-      });
-    });
-  });
-
 });

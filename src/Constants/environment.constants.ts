@@ -1,10 +1,4 @@
-const TEN_MINUTES = "600000";
-const FIVE_SECONDS = "5000";
-const cycleTime = parseInt(process.env.REACT_APP_CYCLE_TIME || TEN_MINUTES);
-const loadTime = parseInt(process.env.REACT_APP_LOAD_TIME || FIVE_SECONDS);
+const LOCAL_STORAGE = "app-cache-v1";
 export{
-    TEN_MINUTES,
-    FIVE_SECONDS,
-    cycleTime,
-    loadTime
+    LOCAL_STORAGE
 }
