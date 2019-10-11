@@ -1,20 +1,15 @@
 import React from 'react';
-import App from './App';
-import { ShallowWrapper, shallow } from 'enzyme';
+import { shallow, ShallowWrapper } from "enzyme";
 import { formatHTML } from '../../TestUtilities/htmlFormatter';
-import Picker from '../Picker/Picker';
+import OptionPicker from './OptionPicker';
 
 describe('The App', () => {
 
   let wrapper: ShallowWrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<App />);
+    wrapper = shallow(<OptionPicker />);
   });
 
   it('renders correctly', () => expect(formatHTML(wrapper.html())).toMatchSnapshot());
-
-  it('contains a picker', () => {
-    expect(wrapper.contains(<Picker />)).toEqual(true);
-  });
 });

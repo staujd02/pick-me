@@ -2,8 +2,6 @@
 
 exports[`The App renders correctly 1`] = `
 "
-<div class=\\"App\\">
-  <button id=\\"setup-choice\\">Make Choice</button>
-</div>
+<div class=\\"option-picker\\"></div>
 "
 `;
