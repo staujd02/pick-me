@@ -9,7 +9,7 @@ export type ResultsOfDecisionState = {};
 class ResultsOfDecision extends React.Component<ResultsOfDecisionProps, ResultsOfDecisionState> {
     render(){
         return (
-            <div></div>
+            <div>Done!</div>
         );
     }
 }

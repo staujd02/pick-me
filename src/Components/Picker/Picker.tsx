@@ -2,9 +2,11 @@ import React from 'react';
 import OptionPicker, { Option } from '../OptionPicker/OptionPicker';
 import Choice from '../Choice/Choice';
 import ResultsOfDecision from '../ResultsOfDecision/ResultsOfDecision';
+import Process from '../Process/Process';
 
 export type PickerProps = {}
 export type PickerState = {
+    activeStep: number
     isPicking: boolean
     isChoosing: boolean
     hasChosen: boolean
@@ -13,9 +15,11 @@ export type PickerState = {
 }
 
 class Picker extends React.Component<PickerProps, PickerState> {
+
     constructor(props: PickerProps) {
         super(props);
         this.state = {
+            activeStep: 0,
             isPicking: false,
             isChoosing: false,
             hasChosen: false,
@@ -29,33 +33,38 @@ class Picker extends React.Component<PickerProps, PickerState> {
 
     onClick = () => {
         this.setState({
-            isPicking: true
+            activeStep: 1
         });
     }
 
     optionsPicked = (optionsChosen: Option[]) => {
         this.setState({
-            isChoosing: true,
+            activeStep: 2,
             availableOptions: optionsChosen
         });
     }
 
     optionChosen = (option: Option) => {
         this.setState({
-            hasChosen: true,
+            activeStep: 3,
             chosenOption: option
         });
     }
 
     render() {
-        const { isPicking, isChoosing, hasChosen, availableOptions, chosenOption } = this.state;
+        const { availableOptions, chosenOption, activeStep } = this.state;
         return (
-            <React.Fragment>
-                {!isPicking && <button onClick={this.onClick} id="setup-choice">Make Choice</button>}
-                {isPicking && !isChoosing && <OptionPicker finishedPickingOptionsCallback={this.optionsPicked} />}
-                {isChoosing && !hasChosen && <Choice optionsToChooseFrom={availableOptions} finishedChoosingOption={this.optionChosen}/>}
-                {hasChosen && <ResultsOfDecision chosenOption={chosenOption} />}
-            </React.Fragment>
+            <Process
+                activeStep={activeStep}
+                steps={
+                    [
+                        <button key={0} onClick={this.onClick} id="setup-choice">Make Choice</button>,
+                        <OptionPicker key={1} finishedPickingOptionsCallback={this.optionsPicked} />,
+                        <Choice key={2} optionsToChooseFrom={availableOptions} finishedChoosingOption={this.optionChosen} />,
+                        <ResultsOfDecision key={3} chosenOption={chosenOption} />
+                    ]
+                }
+            />
         );
     }
 

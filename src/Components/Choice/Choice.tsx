@@ -9,8 +9,14 @@ export type ChoiceState = {}
 
 class Choice extends React.Component<ChoiceProps, ChoiceState>{
     render(){
+        let dummy: Option = {
+            title: "A Title",
+            image: ""
+        }
         return (
-            <div></div>
+            <div>
+                <button onClick={() => this.props.finishedChoosingOption(dummy)}>Next Again</button>
+            </div>
         );
     }
 }

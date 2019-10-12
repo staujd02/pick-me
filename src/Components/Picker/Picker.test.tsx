@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShallowWrapper, shallow } from 'enzyme';
+import { mount, ReactWrapper } from 'enzyme';
 import { formatHTML } from '../../TestUtilities/htmlFormatter';
 import Picker, { PickerProps, PickerState } from './Picker';
 import OptionPicker, { Option } from '../OptionPicker/OptionPicker';
@@ -8,10 +8,10 @@ import ResultsOfDecision from '../ResultsOfDecision/ResultsOfDecision';
 
 describe('The Picker', () => {
 
-    let wrapper: ShallowWrapper<PickerProps, PickerState, Picker>;
+    let wrapper: ReactWrapper<PickerProps, PickerState, Picker>;
 
     beforeEach(() => {
-        wrapper = shallow(<Picker />);
+        wrapper = mount(<Picker />);
     });
 
     it('renders correctly', () => expect(formatHTML(wrapper.html())).toMatchSnapshot());
@@ -22,19 +22,20 @@ describe('The Picker', () => {
     });
 
     it('does not ask the user to make a choice by default', () => {
-        let opts = [];
+        let opts: Option[] = [];
         let c = wrapper.instance().optionChosen;
         expect(wrapper.contains(<Choice optionsToChooseFrom={opts} finishedChoosingOption={c} />)).toEqual(false);
     });
 
     it('does not show the user a choice has been made by default', () => {
-        let opt: Option = { image: "", title: ""};
+        let opt: Option = { image: "", title: "" };
         expect(wrapper.contains(<ResultsOfDecision chosenOption={opt} />)).toEqual(false);
     });
 
     describe('when the user chooses to set up a choice', () => {
         beforeEach(() => {
             clickSetupChoices();
+            wrapper.update();
         });
 
         it('no longer shows the option to set up a choice', () => {
@@ -51,6 +52,7 @@ describe('The Picker', () => {
 
         beforeEach(() => {
             clickSetupChoices();
+            wrapper.update();
         });
 
         it('no longer shows the option to set up a choice', () => {
@@ -61,6 +63,7 @@ describe('The Picker', () => {
 
             beforeEach(() => {
                 wrapper.instance().optionsPicked([]);
+                wrapper.update()
             });
 
             it('does not show the option to pick different choices', () => {
@@ -75,6 +78,7 @@ describe('The Picker', () => {
                         title: "I am chosen"
                     }
                     wrapper.instance().optionChosen(option);
+                    wrapper.update();
                 });
 
                 it('does not show the option to make a different decision', () => {
@@ -93,6 +97,7 @@ describe('The Picker', () => {
 
         beforeEach(() => {
             wrapper.instance().optionChosen(option);
+            wrapper.update();
         });
 
         it('displays some results', () => {
@@ -116,6 +121,7 @@ describe('The Picker', () => {
 
         beforeEach(() => {
             wrapper.instance().optionsPicked(options);
+            wrapper.update();
         });
 
         it('shows the menu for the next user to pick with', () => {

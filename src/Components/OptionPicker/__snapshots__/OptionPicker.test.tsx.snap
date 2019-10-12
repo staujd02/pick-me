@@ -2,6 +2,8 @@
 
 exports[`The App renders correctly 1`] = `
 "
-<div class=\\"option-picker\\"></div>
+<div class=\\"option-picker\\">
+  <button>Next</button>
+</div>
 "
 `;

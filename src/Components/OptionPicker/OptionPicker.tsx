@@ -10,7 +10,9 @@ export type Option = {
 
 const OptionPicker: React.FC<OptionPickerProps> = (props: OptionPickerProps) => {
   return (
-    <div className="option-picker"></div>
+    <div className="option-picker">
+      <button onClick={() => props.finishedPickingOptionsCallback([])}>Next</button>
+    </div>
   );
 }
 
