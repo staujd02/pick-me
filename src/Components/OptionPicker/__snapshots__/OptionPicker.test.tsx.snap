@@ -3,7 +3,25 @@
 exports[`The App renders correctly 1`] = `
 "
 <div class=\\"option-picker\\">
-  <button>Next</button>
+  <button>Done</button>
+  <nav class=\\"MuiList-root MuiList-padding\\" aria-label=\\"main mailbox folders\\">
+    <div class=\\"MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button\\" tabindex=\\"0\\" role=\\"button\\" aria-disabled=\\"false\\">
+      <div class=\\"MuiListItemIcon-root\\">
+        <img src=\\"http://lorempixel.com/16/16/\\" alt=\\"random\\">
+      </div>
+      <div class=\\"MuiListItemText-root\\">
+        <span class=\\"MuiTypography-root MuiListItemText-primary MuiTypography-body1\\">Inbox</span>
+      </div>
+    </div>
+    <div class=\\"MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button Mui-selected\\" tabindex=\\"0\\" role=\\"button\\" aria-disabled=\\"false\\">
+      <div class=\\"MuiListItemIcon-root\\">
+        <img src=\\"http://lorempixel.com/16/16/\\" alt=\\"random\\">
+      </div>
+      <div class=\\"MuiListItemText-root\\">
+        <span class=\\"MuiTypography-root MuiListItemText-primary MuiTypography-body1\\">Drafts</span>
+      </div>
+    </div>
+  </nav>
 </div>
 "
 `;
