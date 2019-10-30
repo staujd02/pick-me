@@ -14,3 +14,5 @@ complete understanding of the option presented.
 - Option Screen
     - Two buttons, icons with images
     - Pick one or the other
+
+- Online WebP converter: https://www.smashingmagazine.com/2018/07/converting-images-to-webp/
