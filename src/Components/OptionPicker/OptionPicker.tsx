@@ -4,14 +4,6 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 
-export type OptionPickerProps = {
-  finishedPickingOptionsCallback: (chosenOptions: Option[]) => void
-};
-export type Option = {
-  image: string
-  title: string
-}
-
 const OptionPicker: React.FC<OptionPickerProps> = (props: OptionPickerProps) => {
   return (
     <div className="option-picker">

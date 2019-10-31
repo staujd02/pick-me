@@ -1,7 +1,7 @@
 import React from 'react';
-import { ShallowWrapper, shallow, mount } from 'enzyme';
+import { ShallowWrapper, shallow } from 'enzyme';
 import { formatHTML } from '../../TestUtilities/htmlFormatter';
-import Process, { ProcessProps, ProcessState } from './Process';
+import Process from './Process';
 
 describe('The Process Component', () => {
 

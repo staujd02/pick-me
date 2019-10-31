@@ -1,18 +1,8 @@
 import React from 'react';
-import OptionPicker, { Option } from '../OptionPicker/OptionPicker';
+import OptionPicker from '../OptionPicker/OptionPicker';
 import Choice from '../Choice/Choice';
 import ResultsOfDecision from '../ResultsOfDecision/ResultsOfDecision';
 import Process from '../Process/Process';
-
-export type PickerProps = {}
-export type PickerState = {
-    activeStep: number
-    isPicking: boolean
-    isChoosing: boolean
-    hasChosen: boolean
-    availableOptions: Option[],
-    chosenOption: Option
-}
 
 class Picker extends React.Component<PickerProps, PickerState> {
 

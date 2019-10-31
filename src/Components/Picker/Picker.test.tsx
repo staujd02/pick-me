@@ -1,8 +1,8 @@
 import React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
 import { formatHTML } from '../../TestUtilities/htmlFormatter';
-import Picker, { PickerProps, PickerState } from './Picker';
-import OptionPicker, { Option } from '../OptionPicker/OptionPicker';
+import Picker from './Picker';
+import OptionPicker from '../OptionPicker/OptionPicker';
 import Choice from '../Choice/Choice';
 import ResultsOfDecision from '../ResultsOfDecision/ResultsOfDecision';
 

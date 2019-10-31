@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, ShallowWrapper } from "enzyme";
 import { formatHTML } from '../../TestUtilities/htmlFormatter';
-import OptionPicker, { Option } from './OptionPicker';
+import OptionPicker from './OptionPicker';
 
 describe('The App', () => {
 
