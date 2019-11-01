@@ -13,6 +13,10 @@ type ChoiceProps = {
 type ChoiceState = {}
 type OptionPickerProps = {
   finishedPickingOptionsCallback: (chosenOptions: Option[]) => void
+  options: Option[]
+}
+type OptionPickerState = {
+  selectedOptions: Option[]
 }
 type Option = {
   image: string
