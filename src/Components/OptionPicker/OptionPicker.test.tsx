@@ -3,7 +3,7 @@ import { shallow, ShallowWrapper } from "enzyme";
 import { formatHTML } from '../../TestUtilities/htmlFormatter';
 import OptionPicker from './OptionPicker';
 
-describe('The App', () => {
+describe('The Option Picker', () => {
 
   let wrapper: ShallowWrapper<OptionPickerProps, OptionPickerState>;
   let props: OptionPickerProps;
@@ -20,25 +20,33 @@ describe('The App', () => {
 
   it('renders correctly', () => expect(formatHTML(wrapper.html())).toMatchSnapshot());
 
+  it('disables the done button by default', () => {
+    expect(wrapper.find('button').prop('disabled')).toEqual(true);
+  });
+
   describe('given a list of three options', () => {
     it('renders an option for each card', () => {
-      expect(wrapper.find(cardIdentifier).length).toEqual(3);
+      expect(inList().find(optionIdentifier)).toHaveLength(3);
     });
   });
 
   describe('when the user picks an option', () => {
 
     beforeEach(() => {
-      getFirst(cardActionAreaIdentifier).simulate('click');
+      simulateClick(getFirst(inList(), optionIdentifier));
     });
 
     it('adds it to the list', () => {
       expect(wrapper.state().selectedOptions[0]).toEqual(props.options[0]);
     });
 
+    it('renders the option in the selected list', () => {
+      expect(inSelectionArea().find(optionIdentifier)).toHaveLength(1);
+    });
+
     describe('when the user picks the same option', () => {
       beforeEach(() => {
-        getFirst(cardActionAreaIdentifier).simulate('click');
+        simulateClick(getFirst(inList(), optionIdentifier));
       });
       it('removes it from the list', () => {
         expect(wrapper.state().selectedOptions).toEqual([props.options[0]]);
@@ -47,40 +55,45 @@ describe('The App', () => {
 
     describe('when the picks another option', () => {
       beforeEach(() => {
-        getLast(cardActionAreaIdentifier).simulate('click');
+        simulateClick(getLast(inList(), optionIdentifier));
       });
       it('appends it to the list', () => {
-        expect(wrapper.state().selectedOptions.length).toEqual(2);
+        expect(wrapper.state().selectedOptions).toHaveLength(2);
+      });
+      it('enables the button', () => {
+        expect(wrapper.find('button').prop('disabled')).toEqual(false);
+      });
+
+      describe('when the user clicks the done button', () => {
+        beforeEach(() => {
+          wrapper.find('button').simulate('click');
+        });
+        it("informs the parent of the user's selection", () => {
+          expect(props.finishedPickingOptionsCallback).toHaveBeenLastCalledWith([
+            getOptions()[0],
+            getOptions()[2],
+          ]);
+        });
       });
     });
   });
 
   describe('when the first option is displayed', () => {
-    it('shows the user the title of that option', () => {
-      let firstRenderedOptionTitle = getFirst(typographyIdentifier);
+    it('shows that option to the user', () => {
+      let firstRenderedOptionTitle = getFirst(inList(), optionIdentifier);
       expect(
-        firstRenderedOptionTitle.contains(props.options[0].title)
-      ).toBeTruthy();
-    });
-
-    it('shows the user that options image', () => {
-      let firstRenderedOptionImg = getFirst(imageIdentifier);
-      expect(firstRenderedOptionImg.prop('src')).toEqual(props.options[0].image);
+        firstRenderedOptionTitle.prop('option')
+      ).toEqual(props.options[0]);
     });
   });
 
-  describe('when the last image is displayed', () => {
+  describe('when the last option is displayed', () => {
 
-    it('shows the user the title of that option', () => {
-      let firstRenderedOptionTitle = getLast(typographyIdentifier);
+    it('shows that option to the user', () => {
+      let firstRenderedOptionTitle = getLast(inList(), optionIdentifier);
       expect(
-        firstRenderedOptionTitle.contains(props.options[2].title)
-      ).toBeTruthy();
-    });
-
-    it('shows the user that options image', () => {
-      let firstRenderedOptionImg = getLast(imageIdentifier);
-      expect(firstRenderedOptionImg.prop('src')).toEqual(props.options[2].image);
+        firstRenderedOptionTitle.prop('option')
+      ).toEqual(props.options[2]);
     });
   });
 
@@ -92,7 +105,7 @@ describe('The App', () => {
     });
 
     it('renders an option for each card', () => {
-      expect(wrapper.find(cardIdentifier).length).toEqual(1);
+      expect(inList().find(optionIdentifier)).toHaveLength(1);
     });
   });
 
@@ -114,16 +127,25 @@ describe('The App', () => {
     }));
   }
 
-  function getFirst(typographyIdentifier: string) {
-    return wrapper.find(typographyIdentifier).first();
+  function simulateClick(wrapper: ShallowWrapper) {
+    (wrapper.prop('handleClick') as () => void)();
   }
 
-  function getLast(typographyIdentifier: string) {
-    return wrapper.find(typographyIdentifier).last();
+  function getFirst(wrapper: ShallowWrapper, identifier: string) {
+    return wrapper.find(identifier).first();
   }
 
-  const cardIdentifier = 'WithStyles(ForwardRef(Card))';
-  const typographyIdentifier = 'WithStyles(ForwardRef(Typography))';
-  const cardActionAreaIdentifier = 'WithStyles(ForwardRef(CardActionArea))';
-  const imageIdentifier = 'img';
+  function getLast(wrapper: ShallowWrapper, identifier: string) {
+    return wrapper.find(identifier).last();
+  }
+  
+  function inSelectionArea() {
+    return wrapper.find('.selected-list');
+  }
+
+  function inList() {
+    return wrapper.find('.option-list');
+  }
+
+  const optionIdentifier = 'OptionCard';
 });

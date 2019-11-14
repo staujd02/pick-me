@@ -14,11 +14,23 @@ class Picker extends React.Component<PickerProps, PickerState> {
             isChoosing: false,
             hasChosen: false,
             availableOptions: [],
+            optionsToChooseFrom: [],
             chosenOption: {
                 image: '',
                 title: ''
             }
         }
+    }
+
+    componentDidMount(){
+        this.openRepo();
+    }
+
+    openRepo = async () => {
+        await this.props.optionsRepo.init();
+        this.setState({
+            optionsToChooseFrom: await this.props.optionsRepo.loadOptions()
+        });
     }
 
     onClick = () => {
@@ -42,14 +54,14 @@ class Picker extends React.Component<PickerProps, PickerState> {
     }
 
     render() {
-        const { availableOptions, chosenOption, activeStep } = this.state;
+        const { availableOptions, chosenOption, activeStep, optionsToChooseFrom } = this.state;
         return (
             <Process
                 activeStep={activeStep}
                 steps={
                     [
                         <button key={0} onClick={this.onClick} id="setup-choice">Make Choice</button>,
-                        <OptionPicker key={1} finishedPickingOptionsCallback={this.optionsPicked} />,
+                        <OptionPicker options={optionsToChooseFrom} key={1} finishedPickingOptionsCallback={this.optionsPicked} />,
                         <Choice key={2} optionsToChooseFrom={availableOptions} finishedChoosingOption={this.optionChosen} />,
                         <ResultsOfDecision key={3} chosenOption={chosenOption} />
                     ]

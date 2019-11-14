@@ -3,6 +3,7 @@ import App from './App';
 import { ShallowWrapper, shallow } from 'enzyme';
 import { formatHTML } from '../../TestUtilities/htmlFormatter';
 import Picker from '../Picker/Picker';
+import OptionRepo from '../../Repos/OptionRepo';
 
 describe('The App', () => {
 
@@ -15,6 +16,6 @@ describe('The App', () => {
   it('renders correctly', () => expect(formatHTML(wrapper.html())).toMatchSnapshot());
 
   it('contains a picker', () => {
-    expect(wrapper.contains(<Picker />)).toEqual(true);
+    expect(wrapper.contains(<Picker optionsRepo={new OptionRepo()} />)).toEqual(true);
   });
 });

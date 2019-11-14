@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`The App renders correctly 1`] = `
+exports[`The Option Picker renders correctly 1`] = `
 "
 <div class=\\"option-picker\\">
-  <div class=\\"MuiContainer-root MuiContainer-maxWidthLg\\">
+  <div class=\\"MuiContainer-root option-list MuiContainer-maxWidthLg\\">
     <div class=\\"MuiPaper-root MuiPaper-elevation1 MuiCard-root MuiPaper-rounded\\">
       <button class=\\"MuiButtonBase-root MuiCardActionArea-root\\" tabindex=\\"0\\" type=\\"button\\">
         <p class=\\"MuiTypography-root MuiTypography-body1\\">Option 1</p>
@@ -26,7 +26,8 @@ exports[`The App renders correctly 1`] = `
       </button>
     </div>
   </div>
-  <button>Done</button>
+  <div class=\\"MuiContainer-root selected-list MuiContainer-maxWidthLg\\"></div>
+  <button disabled=\\"\\">Done</button>
 </div>
 "
 `;

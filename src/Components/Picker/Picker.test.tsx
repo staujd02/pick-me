@@ -9,16 +9,38 @@ import ResultsOfDecision from '../ResultsOfDecision/ResultsOfDecision';
 describe('The Picker', () => {
 
     let wrapper: ReactWrapper<PickerProps, PickerState, Picker>;
+    let fakeOptionsRepo: IOptionRepo;
 
     beforeEach(() => {
-        wrapper = mount(<Picker />);
+        fakeOptionsRepo = ({
+            loadOptions: jest.fn().mockResolvedValue(getOptions()),
+            init: jest.fn()
+        })
+        wrapper = mount(<Picker optionsRepo={fakeOptionsRepo} />);
     });
 
     it('renders correctly', () => expect(formatHTML(wrapper.html())).toMatchSnapshot());
 
+    describe('when the component mounts', () => {
+
+        beforeEach(async done => {
+            await wrapper.instance().openRepo();
+            done();
+        });
+
+        it('starts an instance of option repo', () => {
+            expect(fakeOptionsRepo.init).toHaveBeenCalled();
+        });
+        
+        it('saves the options to the repo', () => {
+            expect(wrapper.state().optionsToChooseFrom).toEqual(getOptions());
+        });
+    });
+
     it('does not ask the user to set up an option by default', () => {
         let c = wrapper.instance().optionsPicked;
-        expect(wrapper.contains(<OptionPicker finishedPickingOptionsCallback={c} />)).toEqual(false);
+        let o = wrapper.state().optionsToChooseFrom;
+        expect(wrapper.contains(<OptionPicker options={o} finishedPickingOptionsCallback={c} />)).toEqual(false);
     });
 
     it('does not ask the user to make a choice by default', () => {
@@ -44,7 +66,8 @@ describe('The Picker', () => {
 
         it('should show a picker for those options', () => {
             let c = wrapper.instance().optionsPicked;
-            expect(wrapper.contains(<OptionPicker finishedPickingOptionsCallback={c} />)).toEqual(true);
+            let o = wrapper.state().optionsToChooseFrom;
+            expect(wrapper.contains(<OptionPicker options={o} finishedPickingOptionsCallback={c} />)).toEqual(true);
         });
     });
 
@@ -137,5 +160,18 @@ describe('The Picker', () => {
 
     function clickSetupChoices() {
         wrapper.find('#setup-choice').simulate('click');
+    }
+
+    function getOptions(): Option[] {
+        return [
+            {
+                title: 'title',
+                image: "image"
+            },
+            {
+                title: 'title 2',
+                image: "image 2"
+            },
+        ]
     }
 });
